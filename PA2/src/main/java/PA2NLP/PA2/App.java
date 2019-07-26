@@ -13,11 +13,7 @@ public class App
 			  
 			    String prefix ="./data/ALS_test/";
 			    String[] fileNames = {"paper01","paper02","paper03","paper04","paper05","paper06"};
-			    //String[] fileNames = {"C1/article01","C1/article02","C1/article03","C1/article04","C1/article05","C1/article06","C1/article07","C1/article08","C4/article01","C4/article02","C4/article03","C4/article04","C4/article05","C4/article06","C4/article07","C4/article08","C7/article01","C7/article02","C7/article03","C7/article04","C7/article05","C7/article06","C7/article07","C7/article08"};
-			    //String[] testFiles = {"T/unknown01.txt","T/unknown02.txt","T/unknown03.txt","T/unknown04.txt","T/unknown05.txt","T/unknown06.txt","T/unknown07.txt","T/unknown08.txt","T/unknown09.txt","T/unknown10.txt"};
-			    //int[] actual= {1,1,1,1,4,4,7,7,4,1};
-			    
-			    
+   
 			    Integer clusters=5;
 			    Integer threshold_frequency=3;//fileNames.length;
 			    int choice =1;  ///choose 1 for cosine distance, 2 for euclidean distance
@@ -63,94 +59,6 @@ public class App
 			  	matrix=Matrix.makedocm(mergedf,ListofLists);
 			  	System.out.println("1");
 			  	//System.out.println(mergedf);
-			  	
-			  	//==============================================================================
-			  	/*
-			    Integer k=5;
-			  	List<String> xt = new ArrayList<String>(); 	
-			    int sizet=testFiles.length;
-			    
-			    for(int i=0;i<sizet;i++) {
-			    	xt.add(readFile.Readfile(prefix+testFiles[i]));
-			    }
-			  	List<String>[] ListofListst = new List[sizet];
-			  	ListofListst=Preprocess.Start(xt,sizet);
-			  	int[] freq = Matrix.dfreq(mergedf,ListofLists,matrix);
-			  	float[][] matrixt = new float[sizet][mergedf.size()];
-			  	matrixt=Matrix.makedocm_test(mergedf,ListofListst,freq);
-			  	
-			  	System.out.println("");
-			  	System.out.println(" k value chosen : "+k);
-			  	System.out.println("");
-			  	
-			  	int[] clusterize = KNN.normalKNN(matrix,matrixt,k);
-			  	for(int g=0;g<clusterize.length;g++) {
-			  		System.out.println(testFiles[g]+" belongs to Cluster : " +clusterize[g]);
-			  	}
-			  	System.out.println("");
-			  	System.out.println("Fuzzy Clustering : ");
-			  	String[] fclusterize = KNN.fuzzyKNN(matrix,matrixt,k);
-			  	for(int g=0;g<fclusterize.length;g++) {
-			  		System.out.println(testFiles[g]+" :  "+fclusterize[g]);
-			  	}
-			  	System.out.println("");
-			  	System.out.println("Confusion Matrix : ");
-			  	System.out.println("    Predicted     C1  C4  C7 : ");
-			  	int [][] cm=Confusion.confusion_matrix(clusterize,actual);
-			  	for(int i=0;i<3;i++) {
-			  		if(i==0) {
-		  				System.out.print("Actual Cluster 1 : ");
-		  			}
-		  			if(i==1) {
-		  				System.out.print("Actual Cluster 4 : ");
-		  			}
-		  			if(i==2) {
-		  				System.out.print("Actual Cluster 7 : ");
-		  			}
-			  		for(int j=0;j<3;j++) {
-			  			
-			  			System.out.print(cm[i][j]);
-			  			System.out.print("   ");
-			  		}
-			  		System.out.println("");
-			  	}
-			  	
-			  	float p=0;
-			  	float r=0;
-			  	float[] tp =new float[3];
-			  	float[] tc =new float[3];
-			  	
-			  	for(int i=0;i<3;i++) {
-			  		for(int j=0;j<3;j++) {
-			  			tp[i]+=(float)cm[j][i];
-			  			tc[i]+=(float)cm[i][j];
-			  		}
-			  		
-			  	}
-			  	for(int i=0;i<3;i++) {
-			  		p+=cm[i][i]/tp[i];
-			  		r+=cm[i][i]/tc[i];
-			  	}
-			  	p=p/3;
-			  	r=r/3;
-			  	
-			  	float f = 2*p*r/(p+r);
-			  	System.out.println("Precision : "+p);
-			  	System.out.println("Recall : "+r);
-			  	System.out.println("F measure : "+f);
-			  	
-			  	
-			  	/*
-			  	for(int a=0;a<sizet;a++){
-			  		for(int b=0;b<mergedf.size();b++) {
-			  			System.out.print(matrixt[a][b]+" ");
-			  		}
-			  		System.out.println("");
-			  	}
-			  	
-			  	*/
-			  	
-			  	
 			  	
 			  	//Preprocess.twogram(3,ListofLists,Merge.remove_lowfreq(ListofLists, merged, ngram_frequency));
 			  	//Preprocess.threegram(2,ListofLists,Merge.remove_lowfreq(ListofLists, merged, ngram_frequency));
